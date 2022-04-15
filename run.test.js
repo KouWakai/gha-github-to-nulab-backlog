@@ -19,7 +19,7 @@ describe('run', () => {
   it('comments on PR', async () => {
 
     process.env['INPUT_MESSAGE'] = 'Test Comment';
-    process.env['GITHUB_REPOSITORY'] = 'testorg/testrepo';
+    process.env['GITHUB_REPOSITORY'] = 'KouWakai/gha-backlog';
     process.env['GITHUB_TOKEN'] = 'test-github-token';
 
     nock('https://api.github.com')
