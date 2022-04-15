@@ -1,0 +1,12 @@
+name: "PR Comment"
+description: "Comment on PR"
+runs:
+  using: "node12"
+  main: "index.js"
+inputs:
+  message:
+    description: "Message to comment"
+    required: true
+outputs:
+  commentUrl:
+    description: "Comment URL"
