@@ -25,12 +25,12 @@ describe('run', () => {
     nock('https://api.github.com')
       .post('/repos/KouWakai/gha-backlog/issues/6/comments',
         body => body.body === 'Test Comment')
-      .reply(200, {html_url: 'https://github.com/KouWakai/gha-backlog/issues/6#issuecomment-1'});
+      .reply(200, {html_url: 'https://github.com/KouWakai/gha-backlog/issues/6'});
     const setOutputMock = jest.spyOn(core, 'setOutput');
 
     await run();
 
     expect(setOutputMock).toHaveBeenCalledWith(
-      'https://github.com/KouWakai/gha-backlog/issues/6#issuecomment-1');
+      'https://github.com/KouWakai/gha-backlog/issues/6');
   });
 });
