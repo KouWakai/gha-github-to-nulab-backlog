@@ -23,15 +23,15 @@ describe('run', () => {
     process.env['GITHUB_TOKEN'] = 'test-github-token';
 
     nock('https://api.github.com')
-      .post('/repos/testorg/testrepo/issues/1/comments',
+      .post('/repos/KouWakai/gha-backlog/issues/6/comments',
         body => body.body === 'Test Comment')
-      .reply(200, {html_url: 'https://github.com/testorg/testrepo/issues/1#issuecomment-1'});
+      .reply(200, {html_url: 'https://github.com/KouWakai/gha-backlog/issues/6#issuecomment-1'});
     const setOutputMock = jest.spyOn(core, 'setOutput');
 
     await run();
 
     expect(setOutputMock).toHaveBeenCalledWith(
       'commentUrl',
-      'https://github.com/testorg/testrepo/issues/1#issuecomment-1');
+      'https://github.com/KouWakai/gha-backlog/issues/6#issuecomment-1');
   });
 });
