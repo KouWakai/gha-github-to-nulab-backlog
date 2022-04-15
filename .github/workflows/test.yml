@@ -1,25 +1,19 @@
-name: "units-test"
-on:
-  pull_request:
-  push:
-    branches:
-      - main
-      - 'releases/*'
+name: "test-local"
+on: [push, pull_request]
 
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - run: npm ci
-    - run: npm test
-
-  # test action works running from the graph
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: ./
-      with:
-        milliseconds: 1000
+      - uses: actions/checkout@v1
+
+      - run: npm ci
+      - run: npm test
+      - uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: PR comment test
+        id: prComment
+      - run: echo "Comment URL - ${{ steps.prComment.outputs.commentUrl }}"
+        if: steps.prComment.outputs.commentUrl
