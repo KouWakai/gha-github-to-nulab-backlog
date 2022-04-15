@@ -31,7 +31,6 @@ describe('run', () => {
     await run();
 
     expect(setOutputMock).toHaveBeenCalledWith(
-      'commentUrl',
       'https://github.com/KouWakai/gha-backlog/issues/6#issuecomment-1');
   });
 });
