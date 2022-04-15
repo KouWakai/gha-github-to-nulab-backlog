@@ -20,6 +20,7 @@ describe('run', () => {
 
     process.env['INPUT_MESSAGE'] = 'Test Comment';
     process.env['GITHUB_REPOSITORY'] = 'KouWakai/gha-backlog';
+    process.env['GITHUB_TOKEN'] = 'test-github-token';
 
     nock('https://api.github.com')
       .post('/repos/KouWakai/gha-backlog/issues/6/comments',
