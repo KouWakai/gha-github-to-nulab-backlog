@@ -9,8 +9,8 @@ jobs:
     steps:
     - uses: ./
       env:
-        projectid: {{ secrets.PROJECTID }}
-        issuetypeid: {{ secrets.ISSUETYPEID }}
+        projectid: ${{ secrets.PROJECTID }}
+        issuetypeid: ${{ secrets.ISSUETYPEID }}
       with:
         priorityid: 1
         summary: "テスト"
