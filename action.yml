@@ -7,6 +7,9 @@ inputs:
   message:
     description: "Message to comment"
     required: true
-outputs:
-  commentUrl:
-    description: "Comment URL"
+  priorityId:
+    description: "priorityId which is used in Backlog"
+    required: true
+  summary:
+    description: "summary for task created in Backlog"
+    required: true
