@@ -1,7 +1,7 @@
 name: send-backlog
 on:
   issues:
-    types: [open, edited, closed]
+    types: [opened, edited, closed]
 
 jobs:
   send:
