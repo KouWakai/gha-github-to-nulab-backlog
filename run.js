@@ -11,7 +11,7 @@ async function run() {
     const data = {
       projectId:process.env.projectid,
       issueTypeId:process.env.issuetypeid,
-      priorityId: `{priorityid}`,
+      priorityId: `${priorityid}`,
       summary: `${summary}`
     };
 
