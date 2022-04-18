@@ -1,8 +1,27 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const axios = require('axios')
 
 async function run() {
   try {
+
+    const data = {
+      projectId:process.env.PROJECTID,
+      issueTypeId:process.env.ISSUETYPEID,
+      priorityId:process.env.priorityId,
+      summary:process.env.summary
+    };
+  
+    // Sending post data to API URL
+    axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data)
+    .then((res) => {
+        console.log(`Status: ${res.status}`);
+        console.log('Body: ', res.data);
+    }).catch((err) => {
+        console.error(err);
+    });
+
+
     // pull_request exists on payload when a pull_request event is triggered
     // Do nothing when pull_request does not exist on payload
     const pr = github.context.payload.pull_request;
