@@ -8,12 +8,15 @@ async function run() {
     const data = {
       projectId:process.env.projectid,
       issueTypeId:process.env.issuetypeid,
-      priorityId:process.env.priorityId,
+      priorityId:process.env.priorityid,
       summary:process.env.summary
     };
+
+    // headerでコンテンツタイプを指定
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
   
     // Sending post data to API URL
-    axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data)
+    axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data,headers)
     .then((res) => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
