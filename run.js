@@ -8,8 +8,8 @@ async function run() {
     const data = {
       projectId:process.env.projectid,
       issueTypeId:process.env.issuetypeid,
-      priorityId:process.env.priorityid,
-      summary:process.env.summary
+      priorityId:process.env.PRIORITYID,
+      summary:process.env.SUMMARY
     };
 
     // headerでコンテンツタイプを指定
