@@ -1,0 +1,16 @@
+name: send-backlog
+on:
+  issues:
+    types: [open, edited, closed]
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./
+      env:
+        projectid: {{ secrets.PROJECTID }}
+        issuetypeid: {{ secrets.ISSUETYPEID }}
+      with:
+        priorityid: 1
+        summary: "テスト"

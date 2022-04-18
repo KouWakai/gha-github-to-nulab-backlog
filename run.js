@@ -6,8 +6,8 @@ async function run() {
   try {
 
     const data = {
-      projectId:process.env.PROJECTID,
-      issueTypeId:process.env.ISSUETYPEID,
+      projectId:process.env.projectid,
+      issueTypeId:process.env.issuetypeid,
       priorityId:process.env.priorityId,
       summary:process.env.summary
     };
