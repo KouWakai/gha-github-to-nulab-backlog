@@ -5,11 +5,14 @@ const axios = require('axios')
 async function run() {
   try {
 
+    const priorityid = core.getInput('priorityid');
+    const summary = core.getInput('summary');
+
     const data = {
       projectId:process.env.projectid,
       issueTypeId:process.env.issuetypeid,
-      priorityId:process.env.PRIORITYID,
-      summary:process.env.SUMMARY
+      priorityId: `{priorityid}`,
+      summary: `${summary}`
     };
 
     // headerでコンテンツタイプを指定
