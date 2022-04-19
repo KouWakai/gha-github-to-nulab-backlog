@@ -24,8 +24,11 @@ async function run() {
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
+    //APIキー
+    apikey = process.env.apikey;
+
     // Sending post data to API URL
-    axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data,headers)
+    axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
     .then((res) => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
@@ -45,6 +48,7 @@ async function run() {
     core.setFailed(error.message);
   }
 
+  //イシュータイトルを取得
   function getTitle(payload) {
     if (payload.issue && payload.issue.title) {
       return payload.issue.title;
