@@ -24,7 +24,7 @@ async function run() {
       core.getInput('repo-token', {required: true})
     );
     const context = github.context;
-    console.log(context);
+    console.log(context.issue);
 
     
   
