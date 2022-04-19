@@ -20,9 +20,6 @@ async function run() {
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
     // Get client and context
-    const client = new github.GitHub(
-      core.getInput('repo-token', {required: true})
-    );
     const context = github.context;
     console.log(context.issue);
 
