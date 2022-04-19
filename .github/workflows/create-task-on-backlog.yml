@@ -1,7 +1,7 @@
 name: send-backlog
 on:
   issues:
-    types: [opened, edited, closed]
+    types: [opened, edited]
 
 jobs:
   send:
@@ -14,5 +14,6 @@ jobs:
         projectid: ${{ secrets.PROJECTID }}
         issuetypeid: ${{ secrets.ISSUETYPEID }}
       with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         priorityid: 1
         summary: ${{ steps.issue.outputs.title }}
