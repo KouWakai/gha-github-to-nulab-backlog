@@ -5,6 +5,7 @@ const axios = require('axios')
 async function run() {
   try {
 
+    //inputsを取得
     const priorityid = core.getInput('priorityid');
     const summary = core.getInput('summary');
 
@@ -17,6 +18,15 @@ async function run() {
 
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+
+    // Get client and context
+    const client = new github.GitHub(
+      core.getInput('repo-token', {required: true})
+    );
+    const context = github.context;
+    console.log(context);
+
+    
   
     // Sending post data to API URL
     axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data,headers)
@@ -27,15 +37,6 @@ async function run() {
         console.error(err);
     });
 
-
-    // pull_request exists on payload when a pull_request event is triggered
-    // Do nothing when pull_request does not exist on payload
-    const pr = github.context.payload.pull_request;
-    if (!pr) {
-      console.log('github.context.payload.pull_request not exist');
-      return;
-    }
-
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
@@ -44,29 +45,6 @@ async function run() {
       return;
     }
 
-    // Get input
-    const message = core.getInput('message');
-    console.log(`message: ${message}`);
-
-    // Create octokit client
-    const octokit = new github.GitHub(token);
-
-    // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
-    // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
-    const repoWithOwner = process.env['GITHUB_REPOSITORY'];
-    const [owner, repo] = repoWithOwner.split('/');
-
-    // Create a comment on PR
-    // https://octokit.github.io/rest.js/#octokit-routes-issues-create-comment
-    const response = await octokit.issues.createComment({
-      owner,
-      repo,
-      issue_number: pr.number,
-      body: message,
-    });
-    console.log(`created comment URL: ${response.data.html_url}`);
-
-    core.setOutput('commentUrl', response.data.html_url);
   } catch (error) {
     core.setFailed(error.message);
   }
