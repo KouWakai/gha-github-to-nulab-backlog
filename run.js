@@ -7,24 +7,23 @@ async function run() {
 
     //inputsを取得
     const priorityid = core.getInput('priorityid');
-    const summary = core.getInput('summary');
+
+    // Get client and context
+    const context = github.context;
+    const payload = context.payload;
+    
+    const title = getTitle(payload);
 
     const data = {
       projectId:process.env.projectid,
       issueTypeId:process.env.issuetypeid,
       priorityId: `${priorityid}`,
-      summary: `${summary}`
+      summary: `${title}`
     };
 
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
-    // Get client and context
-    const context = github.context;
-    console.log(context.issue);
-
-    
-  
     // Sending post data to API URL
     axios.post('https://ss0413.backlog.com/api/v2/issues?apiKey=ChdR8p4c2WtOfPh5tvTdVjF5rQmci448Z6mnTtPgdHXgEo4sIOX8Ey8FALk89LKP', data,headers)
     .then((res) => {
@@ -45,6 +44,13 @@ async function run() {
   } catch (error) {
     core.setFailed(error.message);
   }
+
+  function getTitle(payload) {
+    if (payload.issue && payload.issue.title) {
+      return payload.issue.title;
+    }
+  }
+  
 }
 
 module.exports = run;
