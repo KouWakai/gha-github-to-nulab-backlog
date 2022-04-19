@@ -10,9 +10,12 @@ secretsに
 
 Backlogの下記パラメーターを設定する
 
-ProjectId
-IssueTypeId
-Apikey
+ProjectId. 
+
+IssueTypeId. 
+
+Apikey. 
+
 
 ```yml
 name: send-backlog
