@@ -31,7 +31,7 @@ async function run() {
     var backlogtaskid = ""
 
     // Sending post data to API URL
-    const res = await axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
+    const res = await axios.post(`https://${process.env.domain}/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
           console.error(err);
       });
     console.log(`Status: ${res.status}`);
