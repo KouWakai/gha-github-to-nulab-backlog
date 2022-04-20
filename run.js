@@ -26,7 +26,7 @@ async function run() {
     console.log(repoWithOwner);
     console.log(context.issue.number);
 
-    const response = await octokit.issues.createComment({
+    const response = await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: context.issue.number,
