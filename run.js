@@ -15,8 +15,8 @@ async function run() {
     const title = getTitle(payload);
 
     const data = {
-      projectId:process.env.projectid,
-      issueTypeId:process.env.issuetypeid,
+      projectId: process.env.projectid,
+      issueTypeId: process.env.issuetypeid,
       priorityId: `${priorityid}`,
       summary: `${title}`
     };
@@ -25,13 +25,17 @@ async function run() {
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
     //APIキー
-    apikey = process.env.apikey;
+    const apikey = process.env.apikey;
+
+    //課題ID格納用
+    var issuekey = ""
 
     // Sending post data to API URL
     axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
     .then((res) => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
+        issuekey = res.body.issueKey;
     }).catch((err) => {
         console.error(err);
     });
@@ -43,6 +47,13 @@ async function run() {
       console.log('GITHUB_TOKEN not exist');
       return;
     }
+
+    const response = await octokit.issues.createComment({
+      owner,
+      repo,
+      issue_number: context.issue.number,
+      body: issuekey,
+    });
 
   } catch (error) {
     core.setFailed(error.message);

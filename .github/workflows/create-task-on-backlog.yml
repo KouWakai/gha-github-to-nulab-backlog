@@ -14,5 +14,5 @@ jobs:
         projectid: ${{ secrets.PROJECTID }}
         issuetypeid: ${{ secrets.ISSUETYPEID }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         priorityid: 1
