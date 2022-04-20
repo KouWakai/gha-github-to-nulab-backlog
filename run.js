@@ -20,7 +20,7 @@ async function run() {
       priorityId: `${priorityid}`,
       summary: `${title}`
     };
-
+    console.log(process.env.BODY)
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
@@ -37,7 +37,7 @@ async function run() {
     console.log(`Status: ${res.status}`);
     console.log('Body: ', res.data);
     backlogtaskid = res.data.issueKey;
-    
+
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
