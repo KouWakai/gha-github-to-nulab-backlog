@@ -30,7 +30,7 @@ async function run() {
       owner,
       repo,
       issue_number: context.issue.number,
-      body: 1,
+      body: "1",
     });
   } catch (error) {
     core.setFailed(error.message);
