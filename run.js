@@ -29,9 +29,9 @@ async function run() {
 
     //課題ID格納用
     var backlogtaskid = ""
-
+    const domain = process.env.domain;
     // Sending post data to API URL
-    const res = await axios.post(`https://${process.env.domain}/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
+    const res = await axios.post(`https://${domain}/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
           console.error(err);
       });
     console.log(`Status: ${res.status}`);
