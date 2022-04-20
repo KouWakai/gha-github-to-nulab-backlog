@@ -36,7 +36,6 @@ async function run() {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
         issuekey = res.data.issueKey;
-        console.log(`issue key is ${issuekey}`)
     }).catch((err) => {
         console.error(err);
     });
@@ -57,11 +56,12 @@ async function run() {
     const repoWithOwner = process.env['GITHUB_REPOSITORY'];
     const [owner, repo] = repoWithOwner.split('/');
 
+    console.log(`issue key is ${issuekey}`)
     const response = await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: context.issue.number,
-      body: issuekey,
+      body: `${issuekey}`,
     });
 
   } catch (error) {
