@@ -35,7 +35,8 @@ async function run() {
     .then((res) => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
-        issuekey = res.body.issueKey;
+        issuekey = res.data.issueKey;
+        console.log(`issue key is ${issuekey}`)
     }).catch((err) => {
         console.error(err);
     });
