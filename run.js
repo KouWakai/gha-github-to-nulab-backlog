@@ -42,7 +42,7 @@ async function run() {
 
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
-    const token = core.getInput('repo-token')
+    const token = process.env.GITHUB_TOKEN;
     if (!token) {
       console.log('GITHUB_TOKEN not exist');
       return;
