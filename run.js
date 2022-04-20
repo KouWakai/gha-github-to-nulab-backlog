@@ -15,7 +15,7 @@ async function run() {
       return;
     }
 
-    // Create octokit client
+    // Create octokit clients
     const octokit = new github.GitHub(token);
 
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
