@@ -10,8 +10,3 @@ inputs:
   summary:
     description: "summary for task created in Backlog"
     required: true
-  issuecomment:
-    description: "issue comment"
-  domain:
-    description: "domain for api url of Backlog"
-    required: true
