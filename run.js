@@ -31,21 +31,14 @@ async function run() {
     var backlogtaskid = ""
 
     // Sending post data to API URL
-    new Promise((resolve) => {
-      axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
+    await axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
       .then((res) => {
           console.log(`Status: ${res.status}`);
           console.log('Body: ', res.data);
           backlogtaskid = res.data.issueKey;
-          console.log(`issue key is ${backlogtaskid}`)
-          resolve();
       }).catch((err) => {
           console.error(err);
-          resolve();
       });
-      
-    });
-    console.log(`issue key is ${backlogtaskid}`)
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
@@ -53,10 +46,8 @@ async function run() {
       console.log('GITHUB_TOKEN not exist');
       return;
     }
-    console.log(`issue key is ${backlogtaskid}`)
     // Create octokit clients
     const octokit = new github.getOctokit(token);
-    console.log(`issue key is ${backlogtaskid}`)
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
     // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
     const repoWithOwner = process.env['GITHUB_REPOSITORY'];
