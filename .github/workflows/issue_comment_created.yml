@@ -1,0 +1,4 @@
+name: cretate-comment-on-backlog
+on:
+  issue_comment:
+    types: [created, deleted]

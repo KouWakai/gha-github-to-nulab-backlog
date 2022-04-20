@@ -13,3 +13,5 @@ inputs:
   summary:
     description: "summary for task created in Backlog"
     required: true
+  issuecomment:
+    description: "issue comment"

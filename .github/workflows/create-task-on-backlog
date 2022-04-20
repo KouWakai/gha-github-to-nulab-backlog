@@ -1,4 +1,4 @@
-name: send-backlog
+name: create-task-on-backlog
 on:
   issues:
     types: [opened, edited]
