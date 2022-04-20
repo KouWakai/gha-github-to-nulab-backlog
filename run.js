@@ -38,10 +38,12 @@ async function run() {
           console.log('Body: ', res.data);
           backlogtaskid = res.data.issueKey;
           console.log(`issue key is ${backlogtaskid}`)
+          resolve();
       }).catch((err) => {
           console.error(err);
+          resolve();
       });
-      resolve();
+      
     });
     console.log(`issue key is ${backlogtaskid}`)
     // Retrieve GITHUB_TOKEN from environment variable
