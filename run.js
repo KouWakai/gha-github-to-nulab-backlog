@@ -28,14 +28,14 @@ async function run() {
     const apikey = process.env.apikey;
 
     //課題ID格納用
-    var issuekey = ""
+    var backlogtaskid = ""
 
     // Sending post data to API URL
     axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
     .then((res) => {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
-        issuekey = res.data.issueKey;
+        backlogtaskid = res.data.issueKey;
     }).catch((err) => {
         console.error(err);
     });
@@ -56,12 +56,12 @@ async function run() {
     const repoWithOwner = process.env['GITHUB_REPOSITORY'];
     const [owner, repo] = repoWithOwner.split('/');
 
-    console.log(`issue key is ${issuekey}`)
+    console.log(`issue key is ${backlogtaskid}`)
     const response = await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: context.issue.number,
-      body: `${issuekey}`,
+      body: `${backlogtaskid}`,
     });
 
   } catch (error) {
