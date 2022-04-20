@@ -20,8 +20,7 @@ async function run() {
       priorityId: `${priorityid}`,
       summary: `${title}`
     };
-    console.log(process.env.issuecomment)
-    console.log(process.env.domain)
+    
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
