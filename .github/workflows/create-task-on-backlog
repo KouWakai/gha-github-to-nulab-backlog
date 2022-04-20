@@ -13,6 +13,7 @@ jobs:
       env:
         projectid: ${{ secrets.PROJECTID }}
         issuetypeid: ${{ secrets.ISSUETYPEID }}
-      with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+      with:
         priorityid: 1
