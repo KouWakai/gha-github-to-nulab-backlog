@@ -5,7 +5,7 @@ async function run() {
   try {
     // Get client and context
     const context = github.context;
-console.log(here)
+console.log("here");
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
