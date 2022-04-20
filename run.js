@@ -36,10 +36,11 @@ async function run() {
         console.log(`Status: ${res.status}`);
         console.log('Body: ', res.data);
         backlogtaskid = res.data.issueKey;
+        console.log(`issue key is ${backlogtaskid}`)
     }).catch((err) => {
         console.error(err);
     });
-
+    console.log(`issue key is ${backlogtaskid}`)
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
@@ -47,10 +48,10 @@ async function run() {
       console.log('GITHUB_TOKEN not exist');
       return;
     }
-
+    console.log(`issue key is ${backlogtaskid}`)
     // Create octokit clients
     const octokit = new github.getOctokit(token);
-
+    console.log(`issue key is ${backlogtaskid}`)
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
     // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
     const repoWithOwner = process.env['GITHUB_REPOSITORY'];
