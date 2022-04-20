@@ -7,6 +7,7 @@ async function run() {
     const context = github.context;
     const payload = context.payload;
 
+    console.log(issue)
     console.log(payload);
     return;
     // Retrieve GITHUB_TOKEN from environment variable
