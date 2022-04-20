@@ -15,7 +15,7 @@ async function run() {
     }
 
     // Create octokit clients
-    const ocktokit = new github.getOctokit(token);
+    const octokit = new github.getOctokit(token);
 
 
 
