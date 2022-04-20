@@ -4,41 +4,8 @@ const axios = require('axios')
 
 async function run() {
   try {
-
-    //inputsを取得
-    const priorityid = core.getInput('priorityid');
-
     // Get client and context
     const context = github.context;
-    const payload = context.payload;
-    
-    const title = getTitle(payload);
-
-    const data = {
-      projectId: process.env.projectid,
-      issueTypeId: process.env.issuetypeid,
-      priorityId: `${priorityid}`,
-      summary: `${title}`
-    };
-
-    // headerでコンテンツタイプを指定
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-
-    //APIキー
-    const apikey = process.env.apikey;
-
-    //課題ID格納用
-    var issuekey = ""
-
-    // Sending post data to API URL
-    axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
-    .then((res) => {
-        console.log(`Status: ${res.status}`);
-        console.log('Body: ', res.data);
-        issuekey = res.body.issueKey;
-    }).catch((err) => {
-        console.error(err);
-    });
 
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
@@ -65,13 +32,6 @@ async function run() {
 
   } catch (error) {
     core.setFailed(error.message);
-  }
-
-  //イシュータイトルを取得
-  function getTitle(payload) {
-    if (payload.issue && payload.issue.title) {
-      return payload.issue.title;
-    }
   }
   
 }
