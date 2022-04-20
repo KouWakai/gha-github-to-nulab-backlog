@@ -42,21 +42,21 @@ async function run() {
 
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
-    const token = process.env.GITHUB_TOKEN;
+    const token = process.env['GITHUB_TOKEN'];
     if (!token) {
       console.log('GITHUB_TOKEN not exist');
       return;
     }
 
-    // Create octokit client
-    const octokit = new github.GitHub(token);
+    // Create octokit clients
+    const octokit = new github.getOctokit(token);
 
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
     // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
-    const repoWithOwner = process.env.GITHUB_REPOSITORY;
+    const repoWithOwner = process.env['GITHUB_REPOSITORY'];
     const [owner, repo] = repoWithOwner.split('/');
 
-    const response = await octokit.issues.createComment({
+    const response = await octokit.rest.issues.createComment({
       owner,
       repo,
       issue_number: context.issue.number,
