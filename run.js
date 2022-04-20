@@ -5,7 +5,6 @@ async function run() {
   try {
     // Get client and context
     const context = github.context;
-console.log("here");
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
@@ -16,7 +15,7 @@ console.log("here");
     }
 
     // Create octokit clients
-    const octokit = new github.GitHub(token);
+    const octokit = github.GitHub(token);
 
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
     // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
