@@ -5,6 +5,10 @@ async function run() {
   try {
     // Get client and context
     const context = github.context;
+    const payload = context.payload;
+
+    console.log(payload);
+    return;
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
     const token = process.env['GITHUB_TOKEN'];
