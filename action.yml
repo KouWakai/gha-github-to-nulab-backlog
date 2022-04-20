@@ -4,12 +4,12 @@ runs:
   using: "node12"
   main: "dist/index.js"
 inputs:
-  message:
-    description: "Message to comment"
-    required: true
   priorityid:
     description: "priorityId which is used in Backlog"
     required: true
   summary:
     description: "summary for task created in Backlog"
+    required: true
+  domain:
+    description: "domain for api url of Backlog"
     required: true
