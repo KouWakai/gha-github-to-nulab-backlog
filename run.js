@@ -31,14 +31,17 @@ async function run() {
     var backlogtaskid = ""
 
     // Sending post data to API URL
-    axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
-    .then((res) => {
-        console.log(`Status: ${res.status}`);
-        console.log('Body: ', res.data);
-        backlogtaskid = res.data.issueKey;
-        console.log(`issue key is ${backlogtaskid}`)
-    }).catch((err) => {
-        console.error(err);
+    new Promise((resolve) => {
+      axios.post(`https://ss0413.backlog.com/api/v2/issues?apiKey=${apikey}`, data,headers)
+      .then((res) => {
+          console.log(`Status: ${res.status}`);
+          console.log('Body: ', res.data);
+          backlogtaskid = res.data.issueKey;
+          console.log(`issue key is ${backlogtaskid}`)
+      }).catch((err) => {
+          console.error(err);
+      });
+      resolve();
     });
     console.log(`issue key is ${backlogtaskid}`)
     // Retrieve GITHUB_TOKEN from environment variable
