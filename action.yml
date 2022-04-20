@@ -12,7 +12,4 @@ inputs:
     required: true
   issuecomment:
     description: "issue comment"
-  domain:
-    description: "domain for api url of Backlog"
-    required: true
 
