@@ -8,7 +8,7 @@ async function run() {
 
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
-    const token = process.env.GITHUB_TOKEN;
+    const token = process.env['GITHUB_TOKEN'];
     if (!token) {
       console.log('GITHUB_TOKEN not exist');
       return;
@@ -19,7 +19,7 @@ async function run() {
 
     // GITHUB_REPOSITORY is GitHub Action's built-in environment variable
     // https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables
-    const repoWithOwner = process.env.GITHUB_REPOSITORY;
+    const repoWithOwner = process.env['GITHUB_REPOSITORY'];
     const [owner, repo] = repoWithOwner.split('/');
     console.log(repoWithOwner);
     console.log(context.issue.number);
