@@ -27,7 +27,7 @@ async function run() {
       owner,
       repo,
       issue_number: context.issue.number,
-      body: issuekey,
+      body: 1,
     });
 
   } catch (error) {
