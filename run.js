@@ -33,7 +33,10 @@ async function run() {
       issue_number: context.issue.number,
     });
 
-    console.log(response.data[0])
+    if(!response.data[0]){
+      response.data[0].foreach(v => console.log(v.body))
+    }
+    
     //response.data.foreach(v => console.log(v))
     
     console.log(context.issue.number);
