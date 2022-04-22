@@ -16,6 +16,8 @@ IssueTypeId.
 
 Apikey. 
 
+APIURLのドメイン
+
 
 ```yml
 name: sync-backlog
