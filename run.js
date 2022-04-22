@@ -35,8 +35,9 @@ async function run() {
     });
 
     var issuekey = "";
+    const apikey = process.env.apikey;
     const domain = process.env.domain;
-    
+
     if(response.data != null){
       let re = /ENGINEER.+/g;
       issuekey = response.data.forEach(v => re.exec(v.body))
