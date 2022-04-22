@@ -7,8 +7,8 @@ async function run() {
     const context = github.context;
     const payload = context.payload;
 
-    console.log(context);
-    console.log(payload);
+    //console.log(context);
+    //console.log(payload);
     
     // Retrieve GITHUB_TOKEN from environment variable
     // Do nothing when GITHUB_TOKEN does not exist
@@ -33,7 +33,8 @@ async function run() {
       issue_number: context.issue.number,
     });
 
-      response.data.foreach(v => console.log(v))
+    console.log(response)
+    //response.data.foreach(v => console.log(v))
     
     console.log(context.issue.number);
 
