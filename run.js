@@ -49,7 +49,7 @@ async function run() {
       content: `${payload.comment.body}`
     };
 
-    const res = await axios.post(`https://${domain}/api/v2/${issuekey[0].body}/comments?apiKey=${apikey}`, data,headers).catch((err) => {
+    const res = await axios.post(`https://${domain}/api/v2/issues/${issuekey[0].body}/comments?apiKey=${apikey}`, data,headers).catch((err) => {
           console.error(err);
       });
 
