@@ -41,7 +41,8 @@ async function run() {
 
     if(response.data != null){
       let re = /ENGINEER.+/g;
-      issuekey = response.data.forEach(v => re.exec(v.body))
+      issuekey = response.data.filter(v => re.exec(v.body))
+      console.log(issuekey)
     }
 
     const comdata = {
@@ -51,8 +52,6 @@ async function run() {
     const res = await axios.post(`https://${domain}/api/v2/${issuekey}?apiKey=${apikey}`, comdata,headers).catch((err) => {
           console.error(err);
       });
-    console.log(`Status: ${res.status}`);
-    console.log('Body: ', res.data);
 
     //response.data.foreach(v => console.log(v))
     
