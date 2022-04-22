@@ -11,6 +11,8 @@ async function run() {
     // Get client and context
     const context = github.context;
     const payload = context.payload;
+
+    console.log(payload);
     
     const title = getTitle(payload);
 
