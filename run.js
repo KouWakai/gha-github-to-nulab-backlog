@@ -34,7 +34,7 @@ async function run() {
     });
 
     if(response.data != null){
-      response.data[0].forEach(v => console.log(v.body))
+      response.data.forEach(v => console.log(v.body))
     }
     
     //response.data.foreach(v => console.log(v))
