@@ -1,62 +1,19 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const axios = require('axios');
+const create_comment = require('./create_comment');
+const create_task = require('./create_task');
 
 async function run() {
   try {
-    // Get client and context
-    const context = github.context;
-    const payload = context.payload;
 
-    //console.log(context);
-    //console.log(payload);
-    
-    // Retrieve GITHUB_TOKEN from environment variable
-    // Do nothing when GITHUB_TOKEN does not exist
-    const token = process.env['GITHUB_TOKEN'];
-    console.log(token)
-    if (!token) {
-      console.log('GITHUB_TOKEN not exist');
+    const pr = github.context.payload.pull_request;
+    if (!pr) {
+      create_comment();
+      return;
+    }else{
+      create_task();
       return;
     }
-
-    // Create octokit clients
-    const octokit = new github.getOctokit(token);
-
-    const repoWithOwner = process.env['GITHUB_REPOSITORY'];
-    const [owner, repo] = repoWithOwner.split('/');
-
-
-
-    const response = await octokit.rest.issues.listComments({
-      owner,
-      repo,
-      issue_number: context.issue.number,
-    });
-
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    var issuekey = "";
-    const apikey = process.env.apikey;
-    const domain = process.env.domain;
-
-    if(response.data != null){
-      let re = /ENGINEER.+/g;
-      issuekey = response.data.filter(v => re.exec(v.body))
-      console.log(issuekey[0].body)
-    }
-
-    const data = {
-      content: `${payload.comment.body}`
-    };
-
-    const res = await axios.post(`https://${domain}/api/v2/issues/${issuekey[0].body}/comments?apiKey=${apikey}`, data,headers).catch((err) => {
-          console.error(err);
-      });
-
-    //response.data.foreach(v => console.log(v))
-    
-    console.log(context.issue.number);
-
     
   } catch (error) {
     core.setFailed(error.message);
