@@ -11,6 +11,8 @@ async function run() {
     // Get client and context
     const context = github.context;
     const payload = context.payload;
+
+    console.log(payload);
     
     const title = getTitle(payload);
 
@@ -20,7 +22,7 @@ async function run() {
       priorityId: `${priorityid}`,
       summary: `${title}`
     };
-    console.log(process.env.BODY)
+    
     // headerでコンテンツタイプを指定
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
@@ -29,9 +31,9 @@ async function run() {
 
     //課題ID格納用
     var backlogtaskid = ""
-
+    const domain = process.env.domain;
     // Sending post data to API URL
-    const res = await axios.post(`https://${process.env.domain}/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
+    const res = await axios.post(`https://${domain}/api/v2/issues?apiKey=${apikey}`, data,headers).catch((err) => {
           console.error(err);
       });
     console.log(`Status: ${res.status}`);
