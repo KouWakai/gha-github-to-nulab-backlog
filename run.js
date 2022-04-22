@@ -6,11 +6,11 @@ const create_task = require('./create_task');
 async function run() {
   try {
 
-    const pr = github.context.payload.pull_request;
-    if (!pr) {
+    const pr = github.context.payload.action;
+    if ('created') {
       create_comment();
       return;
-    }else{
+    }else if('opened'){
       create_task();
       return;
     }
