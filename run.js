@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const create_comment = require('./create_comment');
-const create_task = require('./create_task');
+const create_comment = require('./src/create_comment');
+const create_task = require('./src/create_task');
 
 async function run() {
   try {
