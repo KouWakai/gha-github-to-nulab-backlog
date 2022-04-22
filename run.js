@@ -8,11 +8,11 @@ async function run() {
 
     const type = github.context.payload.action;
     if (type == 'created') {
+      console.log("comment is posted on Github!!")
       create_comment();
-      return;
     }else if(type == 'opened'){
+      console.log("issue is opend in Github!!")
       create_task();
-      return;
     }
     
   } catch (error) {

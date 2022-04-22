@@ -11,8 +11,6 @@ async function create_task() {
       // Get client and context
       const context = github.context;
       const payload = context.payload;
-  
-      console.log(payload);
       
       const title = getTitle(payload);
   
@@ -75,4 +73,4 @@ async function create_task() {
     
   }
 
-module.exports = create-task;
+module.exports = create_task;
