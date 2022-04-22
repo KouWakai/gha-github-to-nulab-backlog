@@ -42,14 +42,14 @@ async function run() {
     if(response.data != null){
       let re = /ENGINEER.+/g;
       issuekey = response.data.filter(v => re.exec(v.body))
-      console.log(issuekey.body)
+      console.log(issuekey[0].body)
     }
 
     const comdata = {
       content: `${payload.comment.body}`
     };
 
-    const res = await axios.post(`https://${domain}/api/v2/${issuekey.body}?apiKey=${apikey}`, comdata,headers).catch((err) => {
+    const res = await axios.post(`https://${domain}/api/v2/${issuekey[0].body}?apiKey=${apikey}`, comdata,headers).catch((err) => {
           console.error(err);
       });
 
