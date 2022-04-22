@@ -34,6 +34,7 @@ async function run() {
       issue_number: context.issue.number,
     });
 
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     var issuekey = "";
     const apikey = process.env.apikey;
     const domain = process.env.domain;
