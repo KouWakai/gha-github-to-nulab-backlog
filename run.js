@@ -42,7 +42,7 @@ async function run() {
     if(response.data != null){
       let re = /ENGINEER.+/g;
       issuekey = response.data.filter(v => re.exec(v.body))
-      console.log(issuekey)
+      console.log(issuekey.body)
     }
 
     const comdata = {
