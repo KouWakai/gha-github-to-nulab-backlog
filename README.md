@@ -18,22 +18,26 @@ Apikey.
 
 
 ```yml
-name: send-backlog
+name: sync-backlog
 on:
   issues:
-    types: [opened, edited]
+    types: [ opened ]
+  issue_comment:
+    types: [ created ]
 
 jobs:
   send:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: KouWakai/gha-github-to-nulab-backlog@v1.0.1
+    - uses: KouWakai/gha-github-to-nulab-backlog@v1-v2-merge
       env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
         projectid: ${{ secrets.PROJECTID }}
         issuetypeid: ${{ secrets.ISSUETYPEID }}
         apikey: ${{ secrets.APIKEY }}
+        domain: ${{ secrets.DOMAIN }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
         priorityid: 1
 ```
