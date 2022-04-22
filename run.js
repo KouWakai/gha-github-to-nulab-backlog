@@ -5,7 +5,6 @@ const create_task = require('./create_task');
 
 async function run() {
   try {
-
     const type = github.context.payload.action;
     if (type == 'created') {
       console.log("comment is posted on Github!!")
@@ -14,7 +13,6 @@ async function run() {
       console.log("issue is opend in Github!!")
       create_task();
     }
-    
   } catch (error) {
     core.setFailed(error.message);
   }
