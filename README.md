@@ -18,7 +18,7 @@ IssueTypeId 課題の種類を表すID、プロジェクトや課題によるた
 
 Apikey 自身で発行したものを入れる
 
-Domain APIURLのドメイン 例：https://test.com/api~ならtest.comをsecretにDomainとして登録する
+Domain APIURLのドメイン 例：https://test.com/api~　ならtest.comをsecretにDomainとして登録する
 
 ```yml
 name: sync-backlog
