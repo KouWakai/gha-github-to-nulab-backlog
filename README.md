@@ -8,17 +8,15 @@ github actionsを通してイシューの作成などをトリガーにbacklog�
 
 # workflows/yml例
 
-secretsに
+secretsにBacklog ---- APIの下記パラメーターを設定する（必須）
 
-Backlog APIの下記パラメーターを設定する（必須）
+**ProjectId** ---- プロジェクトのID、URLなどに記載されている
 
-ProjectId プロジェクトのID、URLなどに記載されている
+**IssueTypeId** ---- 課題の種類を表すID、プロジェクトや課題によるためAPIを手動で叩くなどして取得する
 
-IssueTypeId 課題の種類を表すID、プロジェクトや課題によるためAPIを手動で叩くなどして取得する
+**Apikey** ---- 自身で発行したものを入れる
 
-Apikey 自身で発行したものを入れる
-
-Domain APIURLのドメイン （例：https://test.com/api~ ならtest.comをsecretにDomainとして登録する）
+**Domain** ---- APIURLのドメイン （例：https://test.com/api~ ならtest.comをsecretにDomainとして登録する）
 
 ```yml
 name: sync-backlog
