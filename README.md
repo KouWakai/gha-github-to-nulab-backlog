@@ -8,7 +8,7 @@ github actionsを通してイシューの作成などをトリガーにbacklog�
 
 # workflows/yml例
 
-secretsにBacklog ---- APIの下記パラメーターを設定する（必須）
+secretsにBacklogAPIの下記パラメーターを設定する（必須）
 
 **ProjectId** ---- プロジェクトのID、URLなどに記載されている
 
