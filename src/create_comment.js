@@ -5,10 +5,9 @@ const axios = require('axios');
 async function create_comment(){
     try {
         // Get client and context
-        console.log(123);
         const context = github.context;
         const payload = context.payload;
-
+console.log(payload);
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         var issuekey = "";
         const apikey = process.env.apikey;
