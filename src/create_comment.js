@@ -7,7 +7,7 @@ async function create_comment(){
         // Get client and context
         const context = github.context;
         const payload = context.payload;
-
+console.log(payload);
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         var issuekey = "";
         const apikey = process.env.apikey;
@@ -37,7 +37,8 @@ async function create_comment(){
     
         //GithubイシューのコメントからBacklogの課題キーを正規表現で取得する
         if(response.data != null){
-          let re = /ENGINEER.+/g;
+          let re = /.*-\d*/g;
+            console.log(re);
           issuekey = response.data.filter(v => re.exec(v.body))
           console.log(issuekey[0].body)
         }
