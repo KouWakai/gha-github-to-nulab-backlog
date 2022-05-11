@@ -37,7 +37,8 @@ async function create_comment(){
     
         //GithubイシューのコメントからBacklogの課題キーを正規表現で取得する
         if(response.data != null){
-          let re = /.*-\d+/g;
+          let re = /.*-\d*/g;
+            console.log(re);
           issuekey = response.data.filter(v => re.exec(v.body))
           console.log(issuekey[0].body)
         }
